@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
   const [title, setTitle] = useState("");
-  const [stock, setStock] = useState("");
+  const [stock, setStock] = useState();
   const [file, setFile] = useState("");
   const [preview, setPreview] = useState("");
   const { id } = useParams();
@@ -17,6 +17,7 @@ const EditProduct = () => {
   const getProductById = async () => {
     const response = await axios.get(`http://localhost:5000/products/${id}`);
     setTitle(response.data.name);
+    setStock(response.data.stock);
     setFile(response.data.image);
     setPreview(response.data.url);
   };

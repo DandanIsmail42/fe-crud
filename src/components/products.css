@@ -4,6 +4,7 @@
 .container{
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 20px;
 }
 strong{
     font-size: 25px;
@@ -86,4 +87,14 @@ img{
     grid-template-columns: max-content max-content;
     align-items: center;
     justify-content: center;
+}
+
+.input-form{
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+}
+
+.field{
+    margin-bottom: 10px;
 }
