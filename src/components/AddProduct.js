@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
+  const [stock, setStock] = useState("");
   const [file, setFile] = useState("");
   const [preview, setPreview] = useState("");
   const navigate = useNavigate();
@@ -32,8 +33,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="columns is-centered mt-5">
-      <div className="column is-half">
+    <div className="columns">
+      <div className="column">
         <form onSubmit={saveProduct}>
           <div className="field">
             <label className="label">Product Name</label>
@@ -44,6 +45,18 @@ const AddProduct = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Product Name"
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Stock</label>
+            <div className="control">
+              <input
+                type="number"
+                className="input"
+                value={stock}
+                onChange={(e) => setStock(e.target.value)}
+                placeholder="Stock"
               />
             </div>
           </div>

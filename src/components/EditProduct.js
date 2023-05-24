@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
   const [title, setTitle] = useState("");
+  const [stock, setStock] = useState("");
   const [file, setFile] = useState("");
   const [preview, setPreview] = useState("");
   const { id } = useParams();
@@ -31,6 +32,7 @@ const EditProduct = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("title", title);
+    formData.append("stock", stock);
     try {
       await axios.patch(`http://localhost:5000/products/${id}`, formData, {
         headers: {
@@ -44,8 +46,8 @@ const EditProduct = () => {
   };
 
   return (
-    <div className="columns is-centered mt-5">
-      <div className="column is-half">
+    <div className="columns">
+      <div className="column">
         <form onSubmit={updateProduct}>
           <div className="field">
             <label className="label">Product Name</label>
@@ -59,7 +61,18 @@ const EditProduct = () => {
               />
             </div>
           </div>
-
+          <div className="field">
+            <label className="label">Stock</label>
+            <div className="control">
+              <input
+                type="number"
+                className="input"
+                value={stock}
+                onChange={(e) => setStock(e.target.value)}
+                placeholder="Stock"
+              />
+            </div>
+          </div>
           <div className="field">
             <label className="label">Image</label>
             <div className="control">
@@ -88,7 +101,7 @@ const EditProduct = () => {
 
           <div className="field">
             <div className="control">
-              <button type="submit" className="button is-success">
+              <button type="submit" className="btn-update">
                 Update
               </button>
             </div>
